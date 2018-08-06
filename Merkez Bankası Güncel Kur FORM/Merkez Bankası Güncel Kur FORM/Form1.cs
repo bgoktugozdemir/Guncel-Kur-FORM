@@ -22,7 +22,7 @@ namespace Merkez_Bankası_Güncel_Kur_FORM
         static string USD;
         static string EURO;
         static string POUND;
-        public static string version = "1.1.0";
+        public static string version = "1.2.3";
         public static string username = Properties.Settings.Default.Username;
         public static DateTime licenseExpirationDate;
         public static DateTime licenseStartingDate;
@@ -30,7 +30,8 @@ namespace Merkez_Bankası_Güncel_Kur_FORM
         public static Color DownColor = Color.Firebrick;
         public static Color NotChangedColor = Color.Black;
         private Thread fillDataViewThread;
-
+        private LoginScreen _loginScreen = new LoginScreen();
+        private Thread licenseThread;
         static XmlDocument xmlDoc = new XmlDocument();
 
         CultureInfo culture = new CultureInfo("us");
@@ -43,6 +44,7 @@ namespace Merkez_Bankası_Güncel_Kur_FORM
             //thread.Start();
             InitializeComponent();
             this.Text += $" (v{version}) | Expiration Date [{licenseExpirationDate.ToShortDateString()}]";
+            
             ////Loading Data
             //string str = string.Empty;
             //for (int i = 0; i < 10000; i++)
@@ -52,7 +54,15 @@ namespace Merkez_Bankası_Güncel_Kur_FORM
             //thread.Abort();
         }
 
-        void Open() { }
+        void ControlLicense()
+        {
+            _loginScreen = new LoginScreen();
+            licenseExpirationDate = _loginScreen.ControlExpirationDateFromDB();
+            if (licenseExpirationDate <= DateTime.Now)
+            {
+                Application.Restart();
+            }
+        }
 
         //void Splash()
         //{
@@ -280,8 +290,15 @@ namespace Merkez_Bankası_Güncel_Kur_FORM
 
         private void hesapToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            licenseExpirationDate = _loginScreen.ControlExpirationDateFromDB();
             Form5 form5 = new Form5();
             form5.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            licenseThread = new Thread(ControlLicense);
+            licenseThread.Start();
         }
     }
 }

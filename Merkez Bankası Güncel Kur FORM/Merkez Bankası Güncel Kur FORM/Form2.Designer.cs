@@ -66,6 +66,7 @@
             // 
             this.btnCANCEL.BackColor = System.Drawing.Color.Transparent;
             this.btnCANCEL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCANCEL.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCANCEL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCANCEL.ForeColor = System.Drawing.Color.Red;
             this.btnCANCEL.Location = new System.Drawing.Point(493, 45);
