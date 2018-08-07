@@ -105,6 +105,9 @@
             this.txtLicenseKey.Size = new System.Drawing.Size(49, 21);
             this.txtLicenseKey.TabIndex = 14;
             this.txtLicenseKey.Text = "NULL";
+            this.txtLicenseKey.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.txtLicenseKey_MouseDoubleClick);
+            this.txtLicenseKey.MouseLeave += new System.EventHandler(this.txtLicenseKey_MouseLeave);
+            this.txtLicenseKey.MouseHover += new System.EventHandler(this.txtLicenseKey_MouseHover);
             // 
             // txtLicenseStartingDate
             // 

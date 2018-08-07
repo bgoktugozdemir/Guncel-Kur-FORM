@@ -24,5 +24,21 @@ namespace Merkez_Bankası_Güncel_Kur_FORM
             txtLicenseStartingDate.Text = Form1.licenseStartingDate.ToString();
             txtLicenseExpirationDate.Text = Form1.licenseExpirationDate.ToString();
         }
+
+        private void txtLicenseKey_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Clipboard.SetText(txtLicenseKey.Text);
+            txtLicenseKey.ForeColor = Color.Black;
+        }
+
+        private void txtLicenseKey_MouseLeave(object sender, EventArgs e)
+        {
+            txtLicenseKey.ForeColor = Color.White;
+        }
+
+        private void txtLicenseKey_MouseHover(object sender, EventArgs e)
+        {
+            txtLicenseKey.ForeColor = Color.Yellow;
+        }
     }
 }

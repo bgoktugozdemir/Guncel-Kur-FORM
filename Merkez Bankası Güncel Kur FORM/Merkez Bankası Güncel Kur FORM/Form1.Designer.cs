@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.TarihCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GunCell = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +55,9 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tblKurlarTableAdapter = new Merkez_Bankası_Güncel_Kur_FORM.DOVIZDataSetTableAdapters.tblKurlarTableAdapter();
+            this.veriSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tarihİleVeriSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ayİleVeriSilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblKurlarBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dOVIZDataSet)).BeginInit();
@@ -65,7 +68,6 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
@@ -90,23 +92,24 @@
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridView1.Size = new System.Drawing.Size(298, 636);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
             // TarihCell
             // 
             this.TarihCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.TarihCell.DataPropertyName = "Tarih";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            this.TarihCell.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            this.TarihCell.DefaultCellStyle = dataGridViewCellStyle13;
             this.TarihCell.HeaderText = "Tarih";
             this.TarihCell.Name = "TarihCell";
             this.TarihCell.ReadOnly = true;
@@ -117,9 +120,9 @@
             // 
             this.GunCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.GunCell.DataPropertyName = "Gün";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.GunCell.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.GunCell.DefaultCellStyle = dataGridViewCellStyle14;
             this.GunCell.HeaderText = "Gün";
             this.GunCell.Name = "GunCell";
             this.GunCell.ReadOnly = true;
@@ -130,9 +133,9 @@
             // 
             this.USDCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.USDCell.DataPropertyName = "USD";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.USDCell.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.USDCell.DefaultCellStyle = dataGridViewCellStyle15;
             this.USDCell.HeaderText = "USD $";
             this.USDCell.Name = "USDCell";
             this.USDCell.ReadOnly = true;
@@ -143,9 +146,9 @@
             // 
             this.EUROCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.EUROCell.DataPropertyName = "EURO";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.EUROCell.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.EUROCell.DefaultCellStyle = dataGridViewCellStyle16;
             this.EUROCell.HeaderText = "EURO €";
             this.EUROCell.Name = "EUROCell";
             this.EUROCell.ReadOnly = true;
@@ -156,9 +159,9 @@
             // 
             this.POUNDCell.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.POUNDCell.DataPropertyName = "POUND";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
-            this.POUNDCell.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold);
+            this.POUNDCell.DefaultCellStyle = dataGridViewCellStyle17;
             this.POUNDCell.HeaderText = "POUND £";
             this.POUNDCell.Name = "POUNDCell";
             this.POUNDCell.ReadOnly = true;
@@ -180,6 +183,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.yeniVeriToolStripMenuItem,
             this.işlemToolStripMenuItem,
+            this.veriSilToolStripMenuItem,
             this.hesapToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -201,21 +205,21 @@
             // bugününVerisiEkleToolStripMenuItem
             // 
             this.bugününVerisiEkleToolStripMenuItem.Name = "bugününVerisiEkleToolStripMenuItem";
-            this.bugününVerisiEkleToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.bugününVerisiEkleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bugününVerisiEkleToolStripMenuItem.Text = "Bugünün Verisi Ekle";
             this.bugününVerisiEkleToolStripMenuItem.Click += new System.EventHandler(this.bugününVerisiEkleToolStripMenuItem_Click);
             // 
             // tarihİleVeriEkleToolStripMenuItem
             // 
             this.tarihİleVeriEkleToolStripMenuItem.Name = "tarihİleVeriEkleToolStripMenuItem";
-            this.tarihİleVeriEkleToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.tarihİleVeriEkleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tarihİleVeriEkleToolStripMenuItem.Text = "Tarih ile Veri Ekle";
             this.tarihİleVeriEkleToolStripMenuItem.Click += new System.EventHandler(this.tarihİleVeriEkleToolStripMenuItem_Click);
             // 
             // ayİleVeriEkleToolStripMenuItem
             // 
             this.ayİleVeriEkleToolStripMenuItem.Name = "ayİleVeriEkleToolStripMenuItem";
-            this.ayİleVeriEkleToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.ayİleVeriEkleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ayİleVeriEkleToolStripMenuItem.Text = "Ay ile Veri Ekle";
             this.ayİleVeriEkleToolStripMenuItem.Click += new System.EventHandler(this.ayİleVeriEkleToolStripMenuItem_Click);
             // 
@@ -261,6 +265,29 @@
             // tblKurlarTableAdapter
             // 
             this.tblKurlarTableAdapter.ClearBeforeFill = true;
+            // 
+            // veriSilToolStripMenuItem
+            // 
+            this.veriSilToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tarihİleVeriSilToolStripMenuItem,
+            this.ayİleVeriSilToolStripMenuItem});
+            this.veriSilToolStripMenuItem.Name = "veriSilToolStripMenuItem";
+            this.veriSilToolStripMenuItem.Size = new System.Drawing.Size(53, 19);
+            this.veriSilToolStripMenuItem.Text = "Veri Sil";
+            // 
+            // tarihİleVeriSilToolStripMenuItem
+            // 
+            this.tarihİleVeriSilToolStripMenuItem.Name = "tarihİleVeriSilToolStripMenuItem";
+            this.tarihİleVeriSilToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tarihİleVeriSilToolStripMenuItem.Text = "Tarih İle Veri Sil";
+            this.tarihİleVeriSilToolStripMenuItem.Click += new System.EventHandler(this.tarihİleVeriSilToolStripMenuItem_Click);
+            // 
+            // ayİleVeriSilToolStripMenuItem
+            // 
+            this.ayİleVeriSilToolStripMenuItem.Name = "ayİleVeriSilToolStripMenuItem";
+            this.ayİleVeriSilToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ayİleVeriSilToolStripMenuItem.Text = "Ay İle Veri Sil";
+            this.ayİleVeriSilToolStripMenuItem.Click += new System.EventHandler(this.ayİleVeriSilToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -313,6 +340,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn POUNDCell;
         private System.Windows.Forms.ToolStripMenuItem hesapToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem veriSilToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tarihİleVeriSilToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ayİleVeriSilToolStripMenuItem;
     }
 }
 

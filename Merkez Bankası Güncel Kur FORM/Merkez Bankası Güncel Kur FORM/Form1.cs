@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
@@ -77,8 +78,8 @@ namespace Merkez_Bankası_Güncel_Kur_FORM
             FillDataView();
         }
 
-        private delegate void SetFillDataView();
-        private void FillDataView()
+        public delegate void SetFillDataView();
+        public void FillDataView()
         {
             this.tblKurlarTableAdapter.Fill(this.dOVIZDataSet.tblKurlar);
             dataGridView1.Sort(dataGridView1.Columns["TarihCell"], ListSortDirection.Descending);
@@ -171,7 +172,8 @@ namespace Merkez_Bankası_Güncel_Kur_FORM
 
         private void AddValue(string m, string y)
         {
-            int barPercent = 100 / progressBar1.Step;
+            float barPercent = 100 / progressBar1.Step;
+            float bar = 0;
             progressBar1.Visible = true;
             for (int i = 1; i < 31; i++)
             {
@@ -187,7 +189,8 @@ namespace Merkez_Bankası_Güncel_Kur_FORM
                     continue;
                 }
                 SaveToDatabaseMonth();
-                progressBar1.Value += barPercent;
+                bar += barPercent;
+                progressBar1.Value = Convert.ToInt32(bar);
             }
             if (InvokeRequired)
                 BeginInvoke(new SetFillDataView(FillDataView));
@@ -299,6 +302,61 @@ namespace Merkez_Bankası_Güncel_Kur_FORM
         {
             licenseThread = new Thread(ControlLicense);
             licenseThread.Start();
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            _loginScreen.DeleteRowFromDB((DateTime)((DataGridView)sender).CurrentRow.Cells[0].Value);
+            FillDataView();
+        }
+
+        private void tarihİleVeriSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Silmek istediğiniz tarihlerin üzerine çift tıklamanız yeterlidir.","İPUCU",MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ayİleVeriSilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string m;
+            string y;
+
+            Form3 form3 = new Form3();
+            form3.ShowDialog();
+
+            if (form3.isReady)
+            {
+                m = Form3.dateTime.Month.ToString("00");
+                y = Form3.dateTime.Year.ToString();
+
+                Thread thread = new Thread(() => DeleteValue(m, y));
+                thread.Start();
+            }
+        }
+
+        private void DeleteValue(string m, string y)
+        {
+            float barPercent = 100 / progressBar1.Step;
+            float bar = 0;
+            progressBar1.Visible = true;
+            string query = "DELETE FROM tblKurlar " +
+                           "WHERE Tarih=@Tarih ";
+            SqlConnection connection = new SqlConnection(Properties.Settings.Default.DOVIZ);
+            SqlCommand command;
+            connection.Open();
+            for (int d = 1; d <= 31; d++)
+            {
+                command = new SqlCommand(query,connection);
+                string tarih = $"{y}-{m}-{d:00}";
+                command.Parameters.AddWithValue("@Tarih", tarih);
+                command.ExecuteNonQuery();
+                bar += barPercent;
+                progressBar1.Value = Convert.ToInt32(bar);
+            }
+            connection.Close();
+            if (InvokeRequired)
+                BeginInvoke(new SetFillDataView(FillDataView));
+            progressBar1.Visible = false;
+            progressBar1.Value = 0;
         }
     }
 }

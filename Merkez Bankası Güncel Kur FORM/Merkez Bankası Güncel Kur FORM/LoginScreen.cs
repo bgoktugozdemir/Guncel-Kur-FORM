@@ -266,5 +266,16 @@ namespace Merkez_Bankası_Güncel_Kur_FORM
             btnPaste.ForeColor = btnPASTE_DefaultFC;
             btnPaste.BackColor = btnCANCEL_DefaultBC;
         }
+
+        public void DeleteRowFromDB(DateTime time)
+        {
+            string query = "DELETE FROM tblKurlar " +
+                           "WHERE Tarih=@Tarih";
+            Connection.Open();
+            Command = new SqlCommand(query, Connection);
+            Command.Parameters.AddWithValue("@Tarih", time.Year+"-"+time.Month.ToString("00")+"-"+time.Day.ToString("00"));
+            Command.ExecuteNonQuery();
+            Connection.Close();
+        }
     }
 }
